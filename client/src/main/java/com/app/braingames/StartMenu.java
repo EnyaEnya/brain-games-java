@@ -1,6 +1,7 @@
 package com.app.braingames;
 
 import com.app.braingames.core.Game;
+import com.app.braingames.core.history.XmlHistoryServiceImpl;
 import com.app.braingames.game.*;
 
 import java.util.Scanner;
@@ -19,6 +20,7 @@ public class StartMenu {
                 run = false;
             } else {
                 Game startGame = getGame(num);
+                startGame.setHistoryService(new XmlHistoryServiceImpl());
                 startGame.runGame();
                 return;
             }

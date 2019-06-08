@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class Gcd extends AbstractGame{
 
+    private static final String GAMENAME = "Gcd";
+
     private static final String CONDITION = "Find the greatest common divisor of given numbers.";
 
     private static final Random RANDOM = new Random();
@@ -21,6 +23,11 @@ public class Gcd extends AbstractGame{
         int questionNum2 = RANDOM.nextInt(100);
         int rightAnswer = gcd(questionNum1, questionNum2);
         return new Pair(questionNum1 + ", " + questionNum2, String.valueOf(rightAnswer));
+    }
+
+    @Override
+    protected String getGameName() {
+        return GAMENAME;
     }
 
     private int gcd(int questionNum1, int questionNum2) {

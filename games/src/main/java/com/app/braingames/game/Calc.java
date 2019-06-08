@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class Calc extends AbstractGame {
 
+    private static final String GAMENAME = "Calc";
+
     private static final String CONDITION = "What is the result of the expression?";
 
     private static final Random RANDOM = new Random();
@@ -22,6 +24,11 @@ public class Calc extends AbstractGame {
         String operator = getRandomOperation();
         int rightAnswer = calculate(questionNum1, operator, questionNum2);
         return new Pair(questionNum1 + operator + questionNum2, String.valueOf(rightAnswer));
+    }
+
+    @Override
+    protected String getGameName() {
+        return GAMENAME;
     }
 
     private String getRandomOperation() {

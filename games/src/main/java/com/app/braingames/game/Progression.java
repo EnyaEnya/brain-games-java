@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class Progression extends AbstractGame {
 
+    private static final String GAMENAME = "Progression";
+
     private static final String CONDITION = "What number is missing in the progression?";
 
     private static final Random RANDOM = new Random();
@@ -20,6 +22,11 @@ public class Progression extends AbstractGame {
         int step = 2 + RANDOM.nextInt(10 - 2);
         int length = 10;
         return brainProgression(length, step);
+    }
+
+    @Override
+    protected String getGameName() {
+        return GAMENAME;
     }
 
     private Pair brainProgression(int length, int step) {
