@@ -1,9 +1,12 @@
 package com.app.braingames;
 
 import com.app.braingames.core.Game;
+import com.app.braingames.core.history.HistoryRecord;
+import com.app.braingames.core.history.HistoryService;
 import com.app.braingames.core.history.XmlHistoryServiceImpl;
 import com.app.braingames.game.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class StartMenu {
@@ -11,6 +14,8 @@ public class StartMenu {
     private Scanner scanner = new Scanner(System.in);
 
     private boolean run = true;
+
+    private HistoryService historyService = new XmlHistoryServiceImpl();
 
 
     public void run() {
@@ -20,12 +25,24 @@ public class StartMenu {
                 run = false;
             } else {
                 Game startGame = getGame(num);
-                startGame.setHistoryService(new XmlHistoryServiceImpl());
+                startGame.setHistoryService(historyService);
                 startGame.runGame();
+                System.out.println(xmlToString(historyService.getHistory()));
                 return;
             }
         }
 
+    }
+
+    private String xmlToString(List<HistoryRecord> historyRecords) {
+        String result = "=====";
+        for (HistoryRecord record: historyRecords) {
+            result += "\n";
+            result += record.toString();
+        }
+        result += "\n";
+        result += "=====";
+        return result;
     }
 
 
