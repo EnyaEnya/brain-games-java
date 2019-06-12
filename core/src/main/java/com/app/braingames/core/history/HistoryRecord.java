@@ -2,7 +2,6 @@ package com.app.braingames.core.history;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
@@ -10,13 +9,12 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HistoryRecord {
 
-    @XmlElement
     private String user;
-    @XmlElement
+
     private String game;
-    @XmlElement
+
     private String result;
-    @XmlElement
+
     private Date date;
 
     public String getUser() {

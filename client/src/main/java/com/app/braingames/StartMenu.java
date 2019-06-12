@@ -3,7 +3,7 @@ package com.app.braingames;
 import com.app.braingames.core.Game;
 import com.app.braingames.core.history.HistoryRecord;
 import com.app.braingames.core.history.HistoryService;
-import com.app.braingames.core.history.XmlHistoryServiceImpl;
+import com.app.braingames.core.history.JsonHistoryServiceImpl;
 import com.app.braingames.game.*;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class StartMenu {
 
     private boolean run = true;
 
-    private HistoryService historyService = new XmlHistoryServiceImpl();
+    private HistoryService historyService = new JsonHistoryServiceImpl();
 
 
     public void run() {
