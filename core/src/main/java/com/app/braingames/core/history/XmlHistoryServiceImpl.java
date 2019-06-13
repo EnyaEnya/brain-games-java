@@ -7,26 +7,18 @@ import org.apache.commons.io.FileUtils;
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
-public class XmlHistoryServiceImpl implements HistoryService {
+public class XmlHistoryServiceImpl extends AbstractHistoryService {
 
     private Parser parser = new JaxbParser();
 
     @Override
     public void log(String user, String game, String result) {
-        HistoryRecord record = new HistoryRecord();
-        HistoryList list = getHistoryList();
-        list.getRecords().add(record);
-        record.setUser(user);
-        record.setGame(game);
-        record.setResult(result);
-        record.setDate(new Date());
         File file = new File("records.xml");
         try {
             FileUtils.touch(file);
-            parser.saveObject(file, list);
+            parser.saveObject(file, prepareHistoryList(user, game, result));
         } catch (IOException | JAXBException e) {
             e.printStackTrace();
         }
@@ -38,7 +30,8 @@ public class XmlHistoryServiceImpl implements HistoryService {
         return getHistoryList().getRecords();
     }
 
-    private HistoryList getHistoryList() {
+    @Override
+    protected HistoryList getHistoryList() {
         File file = new File("records.xml");
         if (file.exists()) {
             try {
