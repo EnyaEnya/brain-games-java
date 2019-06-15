@@ -24,7 +24,7 @@ public class Prime extends AbstractGame{
     }
 
     @Override
-    protected String getGameName() {
+    public String getGameName() {
         return GAMENAME;
     }
 

@@ -5,11 +5,15 @@ import com.app.braingames.core.history.HistoryRecord;
 import com.app.braingames.core.history.HistoryService;
 import com.app.braingames.core.history.JsonHistoryServiceImpl;
 import com.app.braingames.game.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class StartMenu {
+
+    private final static Logger log = LoggerFactory.getLogger(StartMenu.class);
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -19,12 +23,15 @@ public class StartMenu {
 
 
     public void run() {
+        log.info("run game");
         while (run) {
             int num = getNum();
             if (num > 5) {
                 run = false;
+                log.info("exit");
             } else {
                 Game startGame = getGame(num);
+                log.info("run game {}", startGame.getGameName());
                 startGame.setHistoryService(historyService);
                 startGame.runGame();
                 System.out.println(xmlToString(historyService.getHistory()));

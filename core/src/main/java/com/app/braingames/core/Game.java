@@ -7,4 +7,6 @@ public interface Game {
     void runGame();
 
     void setHistoryService(HistoryService historyService);
+
+    String getGameName();
 }

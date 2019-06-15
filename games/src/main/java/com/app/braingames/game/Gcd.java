@@ -26,7 +26,7 @@ public class Gcd extends AbstractGame{
     }
 
     @Override
-    protected String getGameName() {
+    public String getGameName() {
         return GAMENAME;
     }
 

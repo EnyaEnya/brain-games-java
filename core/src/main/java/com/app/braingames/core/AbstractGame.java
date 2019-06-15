@@ -47,8 +47,6 @@ public abstract class AbstractGame implements Game {
 
     protected abstract Pair getGameParams();
 
-    protected abstract String getGameName();
-
     private String getUserName(Scanner scanner) {
         System.out.println("Welcome to the Brain Games!");
         System.out.println(getGameCondition());
