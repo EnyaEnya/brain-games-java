@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Prime extends AbstractGame{
 
-    private static final String GAMENAME = "Prime";
+    private static final String GAME_NAME = "Prime";
 
     private static final String CONDITION = "Answer \"yes\" if given number is prime. Otherwise answer \"no\".";
 
@@ -25,7 +25,7 @@ public class Prime extends AbstractGame{
 
     @Override
     public String getGameName() {
-        return GAMENAME;
+        return GAME_NAME;
     }
 
     private boolean isPrime(int questionNum) {

@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Progression extends AbstractGame {
 
-    private static final String GAMENAME = "Progression";
+    private static final String GAME_NAME = "Progression";
 
     private static final String CONDITION = "What number is missing in the progression?";
 
@@ -26,7 +26,7 @@ public class Progression extends AbstractGame {
 
     @Override
     public String getGameName() {
-        return GAMENAME;
+        return GAME_NAME;
     }
 
     private Pair brainProgression(int length, int step) {

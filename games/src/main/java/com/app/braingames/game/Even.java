@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Even extends AbstractGame {
 
-    private static final String GAMENAME = "Even";
+    private static final String GAME_NAME = "Even";
 
     private static final String CONDITION = "Answer \"yes\" if number even otherwise answer \"no\".";
 
@@ -25,7 +25,7 @@ public class Even extends AbstractGame {
 
     @Override
     public String getGameName() {
-        return GAMENAME;
+        return GAME_NAME;
     }
 
     private String getRightAnswer(int number) {
