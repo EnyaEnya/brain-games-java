@@ -36,11 +36,12 @@ public class JsonHistoryServiceImpl extends AbstractHistoryService {
     @Override
     protected HistoryList getHistoryList() {
         File file = new File("records.json");
-        if (file.exists()) {
+        if (file.exists() && file.length() > 0) {
             try {
                 return mapper.readValue(file, HistoryList.class);
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("cannot read file " + file.getAbsolutePath(), e);
+                throw new RuntimeException(e);
             }
         }
         return new HistoryList();
