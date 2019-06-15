@@ -26,7 +26,7 @@ public class StartMenu {
         log.info("run game");
         while (run) {
             int num = getNum();
-            if (num > 5) {
+            if (num > 6) {
                 run = false;
                 log.info("exit");
             } else {
@@ -68,8 +68,11 @@ public class StartMenu {
             case 4:
                 return new Prime();
 
-            default:
+            case 5:
                 return new Progression();
+
+            default:
+                return new GuessNum();
         }
     }
 
@@ -82,7 +85,8 @@ public class StartMenu {
         System.out.println("3 - Gcd");
         System.out.println("4 - Prime");
         System.out.println("5 - Progression");
-        System.out.println("6 - Exit");
+        System.out.println("6 - GuessNum");
+        System.out.println("7 - Exit");
         String num = scanner.nextLine();
         return Integer.parseInt(num);
     }

@@ -10,24 +10,27 @@ public abstract class AbstractGame implements Game {
 
     private HistoryService historyService;
 
+    protected boolean stopped;
+
     @Override
     public void runGame() {
+        init();
+        stopped = false;
         try (Scanner scanner = new Scanner(System.in)) {
             String userName = getUserName(scanner);
             boolean gameResult = false;
-            for (int i = 0; i < ATTEMPTS; i++) {
+            for (int i = 0; i < ATTEMPTS && !stopped; i++) {
                 Pair params = getGameParams();
                 System.out.println("Question: " + params.question);
                 System.out.print("Your answer: ");
                 String answer = scanner.nextLine();
-                boolean success = answer.equals(params.rightAnswer);
+                boolean success = isRightAnswer(answer, params.rightAnswer);
                 if (success) {
-                    System.out.println("Correct!");
                     gameResult = true;
+                    afterCorrectAnswer();
                 } else {
-                    System.out.println(answer + " is wrong answer ;(. Correct answer was " + params.rightAnswer + ".");
                     gameResult = false;
-                    break;
+                    afterIncorrectAnswer(answer, params);
                 }
             }
 
@@ -35,12 +38,28 @@ public abstract class AbstractGame implements Game {
                 System.out.println("Congratulations, " + userName + "!");
                 historyService.log(userName, getGameName(), "success");
             } else {
-                System.out.println("Let's try again, " + userName + "!");
+                notSuccessGame(userName);
                 historyService.log(userName, getGameName(), "fail");
             }
-
-
         }
+    }
+
+    protected void init() {
+    }
+
+    protected boolean isRightAnswer(String answer, String rightAnswer) {
+        return answer.equals(rightAnswer);
+    }
+
+    protected void afterCorrectAnswer() {
+        System.out.println("Correct!");
+    }
+
+    protected void notSuccessGame(String userName) {System.out.println("Let's try again, " + userName + "!");}
+
+    protected void afterIncorrectAnswer(String answer, Pair params) {
+        System.out.println(answer + " is wrong answer ;(. Correct answer was " + params.rightAnswer + ".");
+        stopped = true;
     }
 
     protected abstract String getGameCondition();
