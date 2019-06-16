@@ -12,6 +12,7 @@
         <module>games</module>
         <module>core</module>
         <module>client</module>
+        <module>webclient</module>
     </modules>
     <packaging>pom</packaging>
     <name>brain games</name>
@@ -25,6 +26,7 @@
         <jackson.version>2.9.9</jackson.version>
         <logback.version>1.2.3</logback.version>
         <slf4j.version>1.7.26</slf4j.version>
+        <javax.servlet.version>3.0.1</javax.servlet.version>
     </properties>
 
     <dependencyManagement>
@@ -116,6 +118,12 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>jul-to-slf4j</artifactId>
                 <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.version}</version>
             </dependency>
 
             <dependency>
