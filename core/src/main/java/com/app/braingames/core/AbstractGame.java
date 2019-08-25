@@ -57,7 +57,9 @@ public abstract class AbstractGame implements Game {
         System.out.println("Correct!");
     }
 
-    protected void notSuccessGame(String userName) {System.out.println("Let's try again, " + userName + "!");}
+    protected void notSuccessGame(String userName) {
+        System.out.println("Let's try again, " + userName + "!");
+    }
 
     protected void afterIncorrectAnswer(String answer, Pair params) {
         System.out.println(answer + " is wrong answer ;(. Correct answer was " + params.rightAnswer + ".");
