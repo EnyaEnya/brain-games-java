@@ -34,13 +34,15 @@ public abstract class AbstractGame implements Game {
                 }
             }
 
+            String result;
             if (gameResult) {
                 System.out.println("Congratulations, " + userName + "!");
-                historyService.log(userName, getGameName(), "success");
+                result = "success";
             } else {
                 notSuccessGame(userName);
-                historyService.log(userName, getGameName(), "fail");
+                result = "fail";
             }
+            historyService.log(userName, getGameName(), result);
         }
     }
 
