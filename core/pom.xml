@@ -14,6 +14,12 @@
     <version>${project.version}</version>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
@@ -85,5 +91,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>

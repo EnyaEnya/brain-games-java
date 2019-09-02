@@ -1,19 +1,16 @@
 package com.app.braingames;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class Main {
-
-    static {
-
-    }
 
     public static void main(String... args) {
 
-        StartMenu startmenu = new StartMenu();
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+
+        StartMenu startmenu = context.getBean(StartMenu.class);
         startmenu.run();
-
-
- //      Game game = new GuessNum();
-  //      game.runGame();
 
         }
 

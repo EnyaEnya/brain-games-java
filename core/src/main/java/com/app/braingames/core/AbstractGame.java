@@ -1,6 +1,7 @@
 package com.app.braingames.core;
 
 import com.app.braingames.core.history.HistoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public abstract class AbstractGame implements Game {
 
     private static final int ATTEMPTS = 3;
 
+    @Autowired
     private HistoryService historyService;
 
     protected boolean stopped;
@@ -91,8 +93,4 @@ public abstract class AbstractGame implements Game {
         }
     }
 
-    @Override
-    public void setHistoryService(HistoryService historyService) {
-        this.historyService = historyService;
-    }
 }

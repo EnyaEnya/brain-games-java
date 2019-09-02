@@ -3,14 +3,16 @@ package com.app.braingames;
 import com.app.braingames.core.Game;
 import com.app.braingames.core.history.HistoryRecord;
 import com.app.braingames.core.history.HistoryService;
-import com.app.braingames.core.history.JsonHistoryServiceImpl;
 import com.app.braingames.game.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class StartMenu {
 
     private final static Logger log = LoggerFactory.getLogger(StartMenu.class);
@@ -19,7 +21,26 @@ public class StartMenu {
 
     private boolean run = true;
 
-    private HistoryService historyService = new JsonHistoryServiceImpl();
+    @Autowired
+    private Calc calc;
+
+    @Autowired
+    private Even even;
+
+    @Autowired
+    private Gcd gcd;
+
+    @Autowired
+    private GuessNum guessNum;
+
+    @Autowired
+    private Prime prime;
+
+    @Autowired
+    private Progression progression;
+
+    @Autowired
+    private HistoryService historyService;
 
 
     public void run() {
@@ -32,7 +53,6 @@ public class StartMenu {
             } else {
                 Game startGame = getGame(num);
                 log.info("run game {}", startGame.getGameName());
-                startGame.setHistoryService(historyService);
                 startGame.runGame();
                 System.out.println(xmlToString(historyService.getHistory()));
                 return;
@@ -57,22 +77,22 @@ public class StartMenu {
     private Game getGame(int num) {
         switch (num) {
             case 1:
-                return new Calc();
+                return calc;
 
             case 2:
-                return new Even();
+                return even;
 
             case 3:
-                return new Gcd();
+                return gcd;
 
             case 4:
-                return new Prime();
+                return prime;
 
             case 5:
-                return new Progression();
+                return progression;
 
             default:
-                return new GuessNum();
+                return guessNum;
         }
     }
 

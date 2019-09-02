@@ -1,9 +1,11 @@
 package com.app.braingames.game;
 
 import com.app.braingames.core.AbstractGame;
+import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Component
 public class Even extends AbstractGame {
 
     private static final String GAME_NAME = "Even";
